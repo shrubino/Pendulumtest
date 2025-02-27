@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://b10t3wriljdbl"]
+
+[ext_resource type="Script" path="res://main_guy.gd" id="1_ux4e0"]
+[ext_resource type="Texture2D" uid="uid://bmhjr4n0ogc1e" path="res://Resources/tilemap.png" id="2_woxit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ukk0i"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_735lf"]
+atlas = ExtResource("2_woxit")
+region = Rect2(17, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k463l"]
+atlas = ExtResource("2_woxit")
+region = Rect2(0, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hdab"]
+atlas = ExtResource("2_woxit")
+region = Rect2(17, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enwd2"]
+atlas = ExtResource("2_woxit")
+region = Rect2(0, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvo1v"]
+atlas = ExtResource("2_woxit")
+region = Rect2(17, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj2os"]
+atlas = ExtResource("2_woxit")
+region = Rect2(34, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbtw7"]
+atlas = ExtResource("2_woxit")
+region = Rect2(34, 68, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnlxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_735lf")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k463l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hdab")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enwd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvo1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj2os")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbtw7")
+}],
+"loop": true,
+"name": &"swing",
+"speed": 5.0
+}]
+
+[node name="MainGuy" type="CharacterBody2D"]
+script = ExtResource("1_ux4e0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ukk0i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nnlxc")
+animation = &"fall"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
